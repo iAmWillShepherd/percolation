@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Percolation.Test", "Percolation.Test\Percolation.Test.csproj", "{6B3FFD2C-7EB9-4745-87BB-29993FA6AFE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Percolation", "Percolation\Percolation.csproj", "{13FC66A0-5AE8-4276-937B-A06E2DC501DF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6B3FFD2C-7EB9-4745-87BB-29993FA6AFE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B3FFD2C-7EB9-4745-87BB-29993FA6AFE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B3FFD2C-7EB9-4745-87BB-29993FA6AFE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B3FFD2C-7EB9-4745-87BB-29993FA6AFE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13FC66A0-5AE8-4276-937B-A06E2DC501DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13FC66A0-5AE8-4276-937B-A06E2DC501DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13FC66A0-5AE8-4276-937B-A06E2DC501DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13FC66A0-5AE8-4276-937B-A06E2DC501DF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
