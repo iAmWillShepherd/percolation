@@ -4,8 +4,8 @@ namespace Percolation
 {
     public class Percoloation
     {
-        readonly DisjointSet _grid;
-        readonly bool[] _openCells;
+        readonly DisjointSet _uf;
+        readonly SiteStatus[] _siteStatuses;
         readonly int _vTop;
         readonly int _vBottom;
         readonly int _numSites;
@@ -16,10 +16,10 @@ namespace Percolation
         public Percoloation(int n)
         {
             _numSites = n;
-            _grid = new DisjointSet(n * n + 2);
-            _openCells = new bool[n * n + 1];
-            _vTop = CellId(n, n) + 1;
-            _vBottom = CellId(n, n) + 2;
+            _uf = new DisjointSet(n * n + 2); // add vTop and vBottom
+            _siteStatuses = new SiteStatus[n * n + 1];
+            _vTop = GetSiteId(n, n) + 1;
+            _vBottom = GetSiteId(n, n) + 2;
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace Percolation
             if (IsOpen(i, j))
                 return;
 
-            _openCells[CellId(i, j)] = true;
+            _siteStatuses[GetSiteId(i, j)] = SiteStatus.Open;
             ConnectNeighbors(i, j);
         }
 
@@ -41,7 +41,7 @@ namespace Percolation
         {
             IsValidSite(i, j);
 
-            return _openCells[CellId(i, j)];
+            return _siteStatuses[GetSiteId(i, j)] == SiteStatus.Open;
         }
 
         /// <summary>
@@ -51,15 +51,15 @@ namespace Percolation
         {
             IsValidSite(i, j);
 
-            var id = CellId(i, j);
+            var id = GetSiteId(i, j);
 
-            return _grid.Connected(id, _vTop);
+            return _uf.Connected(id, _vTop);
         }
 
         /// <summary>
         /// does the system percolate?
         /// </summary>
-        public bool Percolates() => _grid.Connected(_vTop, _vBottom);
+        public bool Percolates() => _uf.Connected(_vTop, _vBottom);
 
         #region Helpers
 
@@ -69,7 +69,7 @@ namespace Percolation
                 throw new ArgumentOutOfRangeException();
         }
 
-        int CellId(int i, int j) => i * _numSites + j;
+        int GetSiteId(int i, int j) => i * _numSites + j;
 
         void ConnectNeighbors(int i, int j)
         {
